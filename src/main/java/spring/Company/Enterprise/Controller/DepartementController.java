@@ -40,7 +40,7 @@ public class DepartementController {
 	
 	
 	@GetMapping("/departements/{id}")
-	public ResponseEntity<Departement> getDepartementById(@PathVariable(value="id") Departement did){
+	public ResponseEntity<Departement> getDepartementById(@PathVariable(value="id") int did){
 		
 		Departement d=departementService.findDepartementById(did);
 		
@@ -54,7 +54,7 @@ public class DepartementController {
 	
 
 	@PutMapping("/departements/{id}")
-	public ResponseEntity<Departement> updateDepartement(@PathVariable(value="id") Departement did,@Valid @RequestBody Departement dDetails){
+	public ResponseEntity<Departement> updateDepartement(@PathVariable(value="id") int did,@Valid @RequestBody Departement dDetails){
 		
 		Departement d=departementService.findDepartementById(did);
 		if(d==null) {
@@ -73,7 +73,7 @@ public class DepartementController {
 	}
 	
 	@DeleteMapping("/departements/{id}")
-	public ResponseEntity<?> deleteDepartement(@PathVariable(value="id") Departement did){
+	public ResponseEntity<?> deleteDepartement(@PathVariable(value="id") int did){
 		
 		Departement d=departementService.findDepartementById(did);
 		if(d==null) {

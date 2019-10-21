@@ -41,7 +41,7 @@ public class TimeSheetController {
 	
 	
 	@GetMapping("/timeSheets/{id}")
-	public ResponseEntity<TimeSheet> getTimeSheetById(@PathVariable(value="id") TimeSheet tid){
+	public ResponseEntity<TimeSheet> getTimeSheetById(@PathVariable(value="id") int tid){
 		
 		TimeSheet d=timeSheetService.findTimeSheetById(tid);
 		
@@ -55,7 +55,7 @@ public class TimeSheetController {
 	
 
 	@PutMapping("/timeSheets/{id}")
-	public ResponseEntity<TimeSheet> updateTimeSheet(@PathVariable(value="id") TimeSheet tid,@Valid @RequestBody TimeSheet tDetails){
+	public ResponseEntity<TimeSheet> updateTimeSheet(@PathVariable(value="id") int tid,@Valid @RequestBody TimeSheet tDetails){
 		
 		TimeSheet t=timeSheetService.findTimeSheetById(tid);
 		if(t==null) {
@@ -79,7 +79,7 @@ public class TimeSheetController {
 	}
 	
 	@DeleteMapping("/timeSheets/{id}")
-	public ResponseEntity<?> deleteContarct(@PathVariable(value="id") TimeSheet tid){
+	public ResponseEntity<?> deleteContarct(@PathVariable(value="id") int tid){
 		
 		TimeSheet t=timeSheetService.findTimeSheetById(tid);
 		if(t==null) {

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +35,13 @@ public class EmployeeServicelmpl implements EmployeeService {
 		return employerepository.save(emp);// ajouter dans la base de données
 		
 	}
-
+	@Transactional
 	@Override
 	public void deleteEmployee(Employee emp) {
 			em.remove(emp); // supprimer depuis la base de données
+		//EmployeeRepository.remove(emp);
 	}
-
+	@Transactional
 	@Override
 	public void updateEmployee(Employee emp) {
 		em.merge(emp); // modification

@@ -15,7 +15,7 @@ public interface ContractService {
 	
 	public void updateContract(Contract c);
 	
-	public Contract findContractById(Contract c);
+	public Contract findContractById(int idC);
 
 	List<Contract> listContracts();
 	

@@ -41,7 +41,7 @@ public class ContractController {
 	
 	
 	@GetMapping("/contracts/{id}")
-	public ResponseEntity<Contract> getContractById(@PathVariable(value="id") Contract cid){
+	public ResponseEntity<Contract> getContractById(@PathVariable(value="id") int cid){
 		
 		Contract d=contractService.findContractById(cid);
 		
@@ -55,7 +55,7 @@ public class ContractController {
 	
 
 	@PutMapping("/contracts/{id}")
-	public ResponseEntity<Contract> updateContract(@PathVariable(value="id") Contract cid,@Valid @RequestBody Contract cDetails){
+	public ResponseEntity<Contract> updateContract(@PathVariable(value="id") int cid,@Valid @RequestBody Contract cDetails){
 		
 		Contract c=contractService.findContractById(cid);
 		if(c==null) {
@@ -77,7 +77,7 @@ public class ContractController {
 	}
 	
 	@DeleteMapping("/contracts/{id}")
-	public ResponseEntity<?> deleteContarct(@PathVariable(value="id") Contract cid){
+	public ResponseEntity<?> deleteContarct(@PathVariable(value="id") int cid){
 		
 		Contract c=contractService.findContractById(cid);
 		if(c==null) {

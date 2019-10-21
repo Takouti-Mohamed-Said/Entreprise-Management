@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +40,7 @@ public class DepartementServicelmpl implements DepartementService {
 	public void deleteDepartement(Departement d) {
 			em.remove(d); // supprimer depuis la base de données
 	}
-
+	@Transactional
 	@Override
 	public void updateDepartement(Departement d) {
 		em.merge(d); // modification
@@ -46,8 +48,8 @@ public class DepartementServicelmpl implements DepartementService {
 	}
 
 	@Override
-	public Departement findDepartementById(Departement d) {
-		return em.find(Departement.class, d.getId());
+	public Departement findDepartementById(int d) {
+		return em.find(Departement.class, d);
 	}
 
 	@Override

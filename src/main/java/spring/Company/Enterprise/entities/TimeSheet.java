@@ -1,8 +1,9 @@
 package spring.Company.Enterprise.entities;
 
 import java.io.Serializable;
-import java.lang.Integer;
-import java.util.Date;
+import java.lang.Integer; 
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -17,19 +18,22 @@ public class TimeSheet implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	private Date dateDebut;
-	private Date dateFin;
+	private String dateDebut;
+	private String dateFin;
 	private static final long serialVersionUID = 1L;
 	
 
 	@ManyToOne
-	@JoinColumn(name="idEmployee", referencedColumnName="id",insertable=false,updatable=false)
+	@JoinColumn(name="idEmployee", referencedColumnName="id")
 	private Employee Employee;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name="idemission", referencedColumnName="id",insertable=false,updatable=false)
+	@JoinColumn(name="idemission", referencedColumnName="id")
 	private Mission mission;
+	
+	/*private List<Employee> employees;
+	private List<Mission> missions;
+	*/
 	public TimeSheet() {
 		super();
 	}   
@@ -57,19 +61,35 @@ public class TimeSheet implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}   
-	public Date getDateDebut() {
+	public String getDateDebut() {
 		return this.dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(String dateDebut) {
 		this.dateDebut = dateDebut;
 	}   
-	public Date getDateFin() {
+	public String getDateFin() {
 		return this.dateFin;
 	}
 
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(String dateFin) {
 		this.dateFin = dateFin;
 	}
+
+	/*public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+
+	public List<Mission> getMissions() {
+		return missions;
+	}
+
+	public void setMissions(List<Mission> missions) {
+		this.missions = missions;
+	}*/
    
 }

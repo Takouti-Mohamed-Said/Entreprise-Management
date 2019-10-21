@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.Company.Enterprise.Repository.ContractRepository;
@@ -37,7 +39,7 @@ public class ContractServicelmpl implements ContractService {
 	public void deleteContract(Contract c) {
 			em.remove(c); // supprimer depuis la base de données
 	}
-
+	@Transactional
 	@Override
 	public void updateContract(Contract c) {
 		em.merge(c); // modification
@@ -45,9 +47,8 @@ public class ContractServicelmpl implements ContractService {
 	}
 
 	@Override
-	
-	public Contract findContractById(Contract c) {
-		return em.find(Contract.class, c.getRef());
+	public Contract findContractById(int c) {
+		return em.find(Contract.class, c);
 	}
 
 	@Override

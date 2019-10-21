@@ -15,7 +15,7 @@ public interface MissionService {
 	
 	public void updateMission(Mission m);
 	
-	public Mission findMissionById(Mission m);
+	public Mission findMissionById(int idM);
 
 	List<Mission> listMissions();
 	

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,7 @@ public class MissionServicelmpl implements MissionService {
 		
 		return Missionrepository.findAll();
 	}
-
+	@Transactional
 	@Override
 	public Mission addMission(Mission m) {
 		return Missionrepository.save(m);// ajouter dans la base de données
@@ -38,7 +40,7 @@ public class MissionServicelmpl implements MissionService {
 	public void deleteMission(Mission m) {
 			em.remove(m); // supprimer depuis la base de données
 	}
-
+	@Transactional
 	@Override
 	public void updateMission(Mission m) {
 		em.merge(m); // modification
@@ -46,8 +48,8 @@ public class MissionServicelmpl implements MissionService {
 	}
 
 	@Override
-	public Mission findMissionById(Mission m) {
-		return em.find(Mission.class, m.getId());
+	public Mission findMissionById(int m) {
+		return em.find(Mission.class, m);
 	}
 
 	@Override

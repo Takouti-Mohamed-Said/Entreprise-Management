@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.Company.Enterprise.Repository.TimeSheetRepository;
@@ -24,7 +26,7 @@ public class TimeSheetServicelmpl implements TimeSheetService {
 		
 		return TimeSheetrepository.findAll();
 	}
-
+	@Transactional
 	@Override
 	public TimeSheet addTimeSheet(TimeSheet t) {
 		return TimeSheetrepository.save(t);// ajouter dans la base de données
@@ -35,7 +37,7 @@ public class TimeSheetServicelmpl implements TimeSheetService {
 	public void deleteTimeSheet(TimeSheet t) {
 			em.remove(t); // supprimer depuis la base de données
 	}
-
+	@Transactional
 	@Override
 	public void updateTimeSheet(TimeSheet t) {
 		em.merge(t); // modification
@@ -43,8 +45,8 @@ public class TimeSheetServicelmpl implements TimeSheetService {
 	}
 
 	@Override
-	public TimeSheet findTimeSheetById(TimeSheet t) {
-		return em.find(TimeSheet.class, t.getId());
+	public TimeSheet findTimeSheetById(int t) {
+		return em.find(TimeSheet.class, t);
 	}
 
 	@Override

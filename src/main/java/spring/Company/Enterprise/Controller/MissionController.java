@@ -40,7 +40,7 @@ public class MissionController {
 	
 	
 	@GetMapping("/missions/{id}")
-	public ResponseEntity<Mission> getMissionById(@PathVariable(value="id") Mission mid){
+	public ResponseEntity<Mission> getMissionById(@PathVariable(value="id") int mid){
 		
 		Mission d=missionService.findMissionById(mid);
 		
@@ -54,7 +54,7 @@ public class MissionController {
 	
 
 	@PutMapping("/missions/{id}")
-	public ResponseEntity<Mission> updateMission(@PathVariable(value="id") Mission mid,@Valid @RequestBody Mission mDetails){
+	public ResponseEntity<Mission> updateMission(@PathVariable(value="id") int mid,@Valid @RequestBody Mission mDetails){
 		
 		Mission m=missionService.findMissionById(mid);
 		if(m==null) {
@@ -75,7 +75,7 @@ public class MissionController {
 	}
 	
 	@DeleteMapping("/missions/{id}")
-	public ResponseEntity<?> deleteContarct(@PathVariable(value="id") Mission mid){
+	public ResponseEntity<?> deleteContarct(@PathVariable(value="id") int mid){
 		
 		Mission m=missionService.findMissionById(mid);
 		if(m==null) {

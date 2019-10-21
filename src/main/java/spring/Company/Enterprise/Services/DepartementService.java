@@ -17,7 +17,7 @@ public interface DepartementService {
 	
 	public void updateDepartement(Departement d);
 	
-	public Departement findDepartementById(Departement d);
+	public Departement findDepartementById(int idD);
 
 	List<Departement> listDepartements();
 	

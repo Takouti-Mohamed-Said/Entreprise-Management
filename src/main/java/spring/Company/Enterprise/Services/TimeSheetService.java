@@ -14,7 +14,7 @@ public interface TimeSheetService {
 	
 	public void updateTimeSheet(TimeSheet t);
 	
-	public TimeSheet findTimeSheetById(TimeSheet t);
+	public TimeSheet findTimeSheetById(int idT);
 
 	List<TimeSheet> listTimeSheet();
 
